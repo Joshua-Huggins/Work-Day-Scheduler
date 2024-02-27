@@ -13,4 +13,4 @@ The image below displays the the application with filler text as an example
 
 ## Deployment
 
-Deployed at 
+Deployed at https://joshua-huggins.github.io/Work-Day-Scheduler/
