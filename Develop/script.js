@@ -1,7 +1,20 @@
 //Makes sure that the current day is displayed on on the planner using dayjs, will automatically 
 //switch with this function.
-var today = dayjs()
-$('#currentDay').text(today.format('dddd, MMMM D'))
+var today = dayjs();
+$('#currentDay').text(today.format('dddd, MMMM D'));
+
+var CurrentHour = dayjs().hour();
+var Timetable = 
+   console.log(CurrentHour);
+  if(CurrentHour >= 9 && CurrentHour <= 17) {
+    $('.description').setClass('present');
+  }
+  else if(CurrentHour < 9) {
+    $('.description').setClass('past');
+  }
+  else {
+    $('.description').addClass('future');
+  };
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
