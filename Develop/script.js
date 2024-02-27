@@ -2,12 +2,16 @@
 //switch with this function.
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D'));
+// added this so that I can see current time including minutes (also
+// to make sure the timeblocks are actually working without having to
+// force it.)
+$('#currentTime').text(today.format('h:mm A'));
 
 // Need the document to be ready before running the functions for 
 // the "Past, Present, Future" functions for formatting the time blocks
 $(document).ready(function () {
 //this will be the time blocks function
-  function timeBlock() {
+function timeBlock() {
     var CurrentHour = dayjs().hour();
     console.log(CurrentHour);
 
@@ -55,11 +59,22 @@ $(document).ready(function () {
 
   // calls on the function to set the formats
   timeBlock();
+  //Event listener for the save button on html
+  $(".saveBtn").on("click", function () {
+    var input = $(this).siblings(".description").val();
+    var where = $(this).parent().attr("id");
+
+    localStorage.setItem(where, input);
+  })
 });
+
+
+
+//                  -- assignment hints to refer back to--
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -78,4 +93,3 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
